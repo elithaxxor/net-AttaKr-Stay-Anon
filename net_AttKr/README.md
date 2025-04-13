@@ -160,6 +160,9 @@ This tool is intended for security professionals to perform authorized security 
 </div>
 
 
+-------------------------------------------------------------
+
+## Changelogs + additional usage
 
 ``` 
 
