@@ -1,4 +1,4 @@
-```markdown
+
 # ⚔️ net_attkr.sh: Network Penetration Toolkit for Raspberry Pi
 
 ![Banner](https://via.placeholder.com/1920x400.png/000000?text=Network+Attack+Script+for+Raspberry+Pi) <!-- Replace with your banner image -->
