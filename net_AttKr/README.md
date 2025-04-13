@@ -1,80 +1,243 @@
 
 # ⚔️ net_attkr.sh: Network Penetration Toolkit for Raspberry Pi
+# 🛡️ net-AttaKr-Stay-Anon: Network Penetration & Anonymity Framework
 
-![Banner](https://via.placeholder.com/1920x400.png/000000?text=Network+Attack+Script+for+Raspberry+Pi) <!-- Replace with your banner image -->
+![Network Attack Toolkit](https://via.placeholder.com/1200x300?text=Network+Attack+Toolkit) <!-- Replace with an actual banner image -->
 
-**net_attkr.sh** is a powerful Bash script designed for **Raspberry Pi** devices to perform ethical network penetration testing, vulnerability assessments, and anonymity operations. Ideal for red teamers and cybersecurity enthusiasts, this tool turns your Pi into a compact attack/defense node.
+## 📋 Overview
 
----
+**net-AttaKr-Stay-Anon** is a comprehensive collection of scripts and tools designed to perform network penetration testing, vulnerability assessment, and anonymity operations. Built with Raspberry Pi compatibility in mind, this toolkit transforms your device into a powerful security testing platform.
 
-## 🌟 Key Features
-
-### 🕵️ Anonymity First
-- **🌐 Tor Network Integration**: Route all traffic through Tor for untraceable operations.
-- **🔄 MAC Address Randomization**: Spoof device identity on every reboot.
-- **📡 DNS Leak Protection**: Ensure no DNS requests expose your real IP.
-
-### ⚡ Offensive Capabilities
-- **ARP Spoofing**: Hijack local network traffic for MITM attacks.
-- **📶 Wi-Fi Deauth**: Force devices to disconnect from networks (requires monitor mode).
-- **🔑 Credential Sniffing**: Capture plaintext credentials on unsecured protocols.
-
-### 📊 Reconnaissance Tools
-- **Network Scanner**: Discover live hosts and open ports.
-- **Service Fingerprinter**: Identify OS and software versions via banner grabbing.
-- **Traffic Analyzer**: Export packet captures to PCAP for Wireshark analysis.
+> ⚠️ **Ethical Use Notice**: This toolkit is intended for security professionals, researchers, and educational purposes only. Always obtain proper authorization before testing any network or system.
 
 ---
 
-## 🛠️ Installation Guide
+## 🌟 Features
 
-### Prerequisites
-- **Raspberry Pi** (Model 3B+ or newer recommended)
-- **Kali Linux ARM** or **Raspberry Pi OS** (with kernel headers)
-- Root access (`sudo` privileges)
+### 🕵️‍♂️ Network Intelligence
+- **🔍 Silent Reconnaissance**: Passive network mapping and device enumeration.
+- **📊 Traffic Analysis**: Deep packet inspection with protocol breakdown.
+- **🔎 Vulnerability Scanning**: Identify weaknesses in network infrastructure.
 
-### Step 1: Clone the Repository
+### ⚔️ Attack Vectors
+- **🌐 ARP Spoofing**: Man-in-the-middle capability for intercepting unencrypted traffic.
+- **📡 Deauthentication**: Targeted and broadcast Wi-Fi disruption (802.11 protocol testing).
+- **🔑 Credential Harvesting**: Extract login information from unencrypted protocols.
+
+### 🕶️ Anonymity Protection
+- **🧅 Tor Integration**: Route all attack traffic through the Tor network.
+- **🔄 MAC Address Manipulation**: Automated hardware address cycling.
+- **🛑 Killswitch Mechanisms**: Auto-terminate connections if anonymity is compromised.
+
+---
+
+## 💻 Installation
+
+### System Requirements
+- Raspberry Pi 3/4/5 (or similar ARM-based device)
+- Kali Linux (recommended) or Raspberry Pi OS
+- External Wi-Fi adapter with monitor mode capability
+- 16GB+ microSD card
+
+### Quick Setup
+
 ```bash
+# Clone the repository
 git clone https://github.com/elithaxxor/net-AttaKr-Stay-Anon.git
-cd net-AttaKr-Stay-Anon/net_AttKr/
-```
+cd net-AttaKr-Stay-Anon
 
-### Step 2: Install Dependencies
-```bash
-sudo apt update && sudo apt install -y \
-  tor macchanger nmap tcpdump aircrack-ng \
-  dsniff python3-scapy
-```
+# Install dependencies
+sudo ./setup.sh
 
-### Step 3: Make Script Executable
-```bash
-chmod +x net_attkr.sh
+# Configure anonymization features
+sudo ./configure-anonymity.sh
 ```
 
 ---
 
-## 🖥️ Usage Examples
+## 🚀 Quick Start Guide
 
-### Basic Network Scan (Stealth Mode)
+### 🔄 Preparing Your Environment
+
+1. **Connect Your Pi**: Set up wired internet or a separate Wi-Fi connection.
+2. **Enable Anonymity Mode**:
+   ```bash
+   sudo ./anon-mode.sh --enable
+   ```
+3. **Verify Protection**:
+   ```bash
+   ./check-anonymity.sh
+   ```
+   
+### 🎯 Basic Reconnaissance Example
+
 ```bash
-sudo ./net_attkr.sh --scan --target 192.168.1.0/24 --tor
-```
-**Output**:
-```
-🌐 Scanning 192.168.1.0/24 via Tor...
-✅ Found 8 active hosts
-📡 Open ports on 192.168.1.5: 22 (SSH), 80 (HTTP)
+# Scan local network silently
+sudo ./net_AttKr/scan.sh --stealth --range 192.168.1.0/24
+
+# Output example:
+# 🔍 Discovered devices:
+# 📱 192.168.1.5  |  Apple iPhone  |  Last seen: 2 mins ago
+# 💻 192.168.1.10 |  Windows PC   |  Services: SMB, HTTP
+# 🖨️ 192.168.1.15 |  HP Printer   |  Ports: 80, 443, 9100
 ```
 
-### Wi-Fi Deauthentication Attack
+### 🔄 Traffic Interception (Basic MITM)
+
 ```bash
-sudo ./net_attkr.sh --deauth \
-  --interface wlan0 \
-  --bssid 00:11:22:33:44:55 \
-  --channel 6 \
-  --duration 60
+# Start ARP spoofing between target and gateway
+sudo ./net_AttKr/mitm.sh --target 192.168.1.5 --gateway 192.168.1.1 --capture
 ```
-**Effect**: Disconnects all devices from target Wi-Fi for 60 seconds.
+
+---
+
+## 📚 Module Breakdown
+
+| Module | Description | Example Usage |
+|--------|-------------|--------------|
+| **🔍 scan.sh** | Network discovery & enumeration | `sudo ./scan.sh --range 192.168.1.0/24` |
+| **🔄 mitm.sh** | Traffic interception & manipulation | `sudo ./mitm.sh --target 192.168.1.5` |
+| **📡 wifi-attacks.sh** | 802.11 protocol testing suite | `sudo ./wifi-attacks.sh --deauth` |
+| **📊 packet-analysis.sh** | Live traffic monitoring & logging | `sudo ./packet-analysis.sh --interface eth0` |
+| **🛡️ anonymity.sh** | Tor routing & identity protection | `sudo ./anonymity.sh --rotate-identity 30` |
+
+---
+
+## 🖼️ Preview
+
+Here's what you can expect to see when running our tools:
+
+### Network Scan Visualization
+```
+Network Topology Map:
+    Router (192.168.1.1)
+         │
+    ┌────┴───────┐
+    │            │
+ Smart TV     Windows PC
+(192.168.1.2)  (192.168.1.3)
+```
+
+### Traffic Capture Interface
+```
+🔴 LIVE CAPTURE: eth0 🔴
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+IP: 192.168.1.5 → 8.8.8.8 | DNS Query: facebook.com
+IP: 192.168.1.3 → 192.168.1.1 | HTTP GET: /router_admin.html
+IP: 192.168.1.10 → 192.168.1.15 | SMB: \\PRINTER\documents\resume.pdf
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+---
+
+## 🛠️ Advanced Configuration
+
+### Customizing Attack Parameters
+
+Edit the `config/attack-profiles.json` file to define common attack patterns:
+
+```json
+{
+  "profile": "home-network",
+  "scan": {
+    "timeout": 0.5,
+    "ports": [22, 80, 443, 8080]
+  },
+  "mitm": {
+    "interval": 5,
+    "protocols": ["http", "dns"]
+  }
+}
+```
+
+### Scheduling Automated Operations
+
+Use the built-in scheduler for time-based operations:
+
+```bash
+# Run reconnaissance every 30 minutes, store results
+sudo ./scheduler.sh --task "scan.sh --stealth" --interval 30m --output results/
+```
+
+---
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+#### ❓ "Permission denied" errors
+```bash
+# Fix permissions
+sudo chown -R $(whoami) ./net_AttKr
+chmod +x ./net_AttKr/*.sh
+```
+
+#### ❓ Wireless adapter not entering monitor mode
+```bash
+# Check compatibility and enable manually
+sudo airmon-ng check kill
+sudo ip link set wlan0 down
+sudo iwconfig wlan0 mode monitor
+sudo ip link set wlan0 up
+```
+
+#### ❓ Tor connection failing
+```bash
+# Verify Tor service is running
+sudo systemctl restart tor
+./check-anonymity.sh --verbose
+```
+
+---
+
+## 📝 Documentation
+
+Detailed documentation is available for each module:
+
+- [Complete Attack Framework Guide](docs/ATTACK_FRAMEWORK.md)
+- [Anonymity Best Practices](docs/ANONYMITY.md)
+- [Custom Module Development](docs/DEVELOPMENT.md)
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how you can help:
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/amazing-tool`)
+3. **Commit** your changes (`git commit -m 'Add amazing new tool'`)
+4. **Push** to your branch (`git push origin feature/amazing-tool`)
+5. Create a **Pull Request**
+
+For major changes, please open an issue first to discuss proposed modifications.
+
+---
+
+## 📊 Project Status
+
+| Module | Status | Last Updated |
+|--------|--------|--------------|
+| Network Scanner | ✅ Complete | 2023-10-15 |
+| MITM Framework | ✅ Complete | 2023-11-05 |
+| Wi-Fi Attacks | ⚠️ In Progress | 2023-12-10 |
+| Anonymity Suite | ✅ Complete | 2023-10-20 |
+| Vulnerability Scanner | 🚧 Under Development | - |
+
+---
+
+<div>  
+<p align="center">
+
+## ⚠️ Legal Disclaimer
+
+This toolkit is provided for **educational and authorized testing purposes ONLY**. Unauthorized access to computer systems and networks is illegal and unethical. Users are responsible for complying with applicable laws and regulations.
+
+**The developers assume NO LIABILITY** for misuse or damage caused by this software.
+</p>
+
+</div>
+
 
 ---
 
