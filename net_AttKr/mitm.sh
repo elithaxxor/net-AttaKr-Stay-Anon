@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+# This script performs ARP spoofing to intercept traffic.
+
 # Dynamically get the active network interface
 # Use the `ip route` command to identify the default network interface associated with the default route.
 # This ensures the script automatically selects the primary active interface if the user doesn't specify one.
