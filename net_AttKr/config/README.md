@@ -1,8 +1,8 @@
-🛠️ Advanced Configuration
-Customizing Attack Parameters
+## 🛠️ Advanced Configuration
+### Customizing Attack Parameters
 
 Edit the config/attack-profiles.json file to define common attack patterns:
-
+```json
 {
   "profile": "home-network",
   "scan": {
@@ -14,11 +14,12 @@ Edit the config/attack-profiles.json file to define common attack patterns:
     "protocols": ["http", "dns"]
   }
 }
+```
+## Scheduling Automated Operations
 
-Scheduling Automated Operations
+**Use the built-in scheduler for time-based operations:**
 
-Use the built-in scheduler for time-based operations:
-
-# Run reconnaissance every 30 minutes, store results
+  **Run reconnaissance every 30 minutes, store results: **
+```bash
 sudo ./scheduler.sh --task "scan.sh --stealth" --interval 30m --output results/
-
+```
