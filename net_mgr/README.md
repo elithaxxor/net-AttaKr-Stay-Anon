@@ -2,7 +2,20 @@
 
 The file `netmgm.sh` is a Bash script designed to provide a suite of network management and security tools. Below is a detailed summary of its functionality:
 
-### Fea
+The .PS1: 
+```
+Notes:
+
+   1. Replace C:\Path\To\proxychains.conf with the actual path to your proxychains configuration file.
+   2. Replace stubbed sections like vulnerability scanner commands and installation steps with the Windows equivalents.
+   3. Ensure required tools like nmap, tor, and firefox are installed and available in the PATH.
+   4. PowerShell requires administrative privileges for certain operations, so this script checks if it's run as an administrator.
+```
+
+### Features
+
+
+
 # Color definitions
 GREEN=$(tput setaf 2)
 YELLOW=$(tput setatures and Functionalities
