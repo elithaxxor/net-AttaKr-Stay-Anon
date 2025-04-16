@@ -9,6 +9,93 @@
 **net-AttaKr-Stay-Anon** is a comprehensive collection of scripts and tools designed to perform network penetration testing, vulnerability assessment, and anonymity operations. Built with Raspberry Pi compatibility in mind, this toolkit transforms your device into a powerful security testing platform.
 
 > ⚠️ **Ethical Use Notice**: This toolkit is intended for security professionals, researchers, and educational purposes only. Always obtain proper authorization before testing any network or system.
+net-AttaKr_Stay-Anon
+
+`net-AttaKr_Stay-Anon` is a suite of network penetration testing and anonymity tools designed for ethical hacking, network analysis, and security assessments. It includes scripts for ARP spoofing, WiFi attacks, packet analysis, and maintaining anonymity using the Tor network. Each script is modular and can be customized based on specific use cases.
+
+## Features
+
+- **ARP Spoofing**: Intercept network traffic between a target and a gateway.
+- **WiFi Attacks**: Perform deauthentication attacks and WiFi-based exploits.
+- **Packet Analysis**: Capture and analyze network packets.
+- **Anonymity Tools**: Configure and maintain anonymity using Tor and MAC address spoofing.
+- **Network Scanning**: Perform network scans for identifying live hosts and open ports.
+
+## Usage
+
+Each script in the repository is designed for a specific task. Below are some examples of the available scripts:
+
+1. **ARP Spoofing**:
+   ```bash
+   ./arp_spoof.sh --interface eth0 --target 192.168.1.100 --gateway 192.168.1.1 --capture
+   ```
+
+2. **WiFi Attacks**:
+   ```bash
+   ./deauth.sh --interface wlan0 --bssid XX:XX:XX:XX:XX:XX --client YY:YY:YY:YY:YY:YY
+   ```
+
+3. **Anonymity Tools**:
+   ```bash
+   ./anon-mode.sh --enable
+   ./anon-mode.sh --disable
+   ```
+
+4. **Network Scanning**:
+   ```bash
+   ./scan.sh --range 192.168.1.0/24
+   ```
+
+5. **Packet Analysis**:
+   ```bash
+   ./packet-analysis.sh --interface eth0
+   ```
+
+## Installation
+
+Clone the repository and navigate to the script directory:
+```bash
+git clone https://github.com/elithaxxor/net-AttaKr_Stay-Anon.git
+cd net-AttaKr_Stay-Anon/net_AttKr
+```
+
+Ensure the required tools are installed on your system:
+- [`tcpdump`](https://www.tcpdump.org/)
+- [`airmon-ng`](https://www.aircrack-ng.org/)
+- [`arpspoof`](https://www.monkey.org/~dugsong/dsniff/)
+- [`macchanger`](https://linux.die.net/man/1/macchanger)
+- [`torsocks`](https://manpages.ubuntu.com/manpages/bionic/man1/torsocks.1.html)
+
+## Requirements
+
+- Linux-based operating system
+- Administrative privileges (`sudo` access)
+- Networking tools (e.g., `tcpdump`, `aircrack-ng`, `dsniff`)
+
+## Disclaimer
+
+This project is intended for educational purposes and ethical hacking only. Unauthorized use of these tools on networks without explicit permission is illegal and unethical. The developers are not responsible for any misuse of this software.
+
+---
+
+## Change Log
+
+### [2025-04-16]
+- **[Update mitm.sh](https://github.com/elithaxxor/net-AttaKr_Stay-Anon/commit/10c74a49bd32f343285922b171b4f28136bdcc8c)**: Refactored and updated MITM script.
+- **[Create deauth.sh](https://github.com/elithaxxor/net-AttaKr_Stay-Anon/commit/aedc08de5858670d10640d971a5ebb30ed08264b)**: Added script for performing deauthentication attacks.
+- **[Create wifi_attacks_0.sh](https://github.com/elithaxxor/net-AttaKr_Stay-Anon/commit/a51e53693b75c18414bb411a697171f0b276f370)**: Introduced new WiFi attack functionalities.
+- **[Create arp_spoof.sh](https://github.com/elithaxxor/net-AttaKr_Stay-Anon/commit/5054f8fc89cdf37a958fa0652e3e0c0020876cd5)**: Added ARP spoofing script.
+- **[Create mitm.sh](https://github.com/elithaxxor/net-AttaKr_Stay-Anon/commit/2e0f5e97bf7d6220816259f7494d15ece68cbe74)**: Initial script for man-in-the-middle attacks.
+- **[Create wifi-attacks.sh](https://github.com/elithaxxor/net-AttaKr_Stay-Anon/commit/849e3caa423c0e01d7c6a92f2682e7130e09e806)**: Added modular script for WiFi attacks.
+- **[Create packet-analysis.sh](https://github.com/elithaxxor/net-AttaKr_Stay-Anon/commit/897cd642017a3281aacb183014595a8a5c96d90e)**: Introduced packet analysis functionalities.
+- **[Create anon-mode.sh](https://github.com/elithaxxor/net-AttaKr_Stay-Anon/commit/c7b9d3f94c1fb514f8d21689ce96a1c52cc99b1f)**: Added anonymity mode configuration script.
+- **[Create check-anonymity.sh](https://github.com/elithaxxor/net-AttaKr_Stay-Anon/commit/bdf2d681cab44bdf4287737544c3116c08c390c3)**: Script to check Tor-based anonymity.
+- **[Create scan.sh](https://github.com/elithaxxor/net-AttaKr_Stay-Anon/commit/cd2fb54e5e26b4b524aea5b0ab99ebbae41f6b2f)**: Network scanning script for identifying live hosts.
+
+---
+
+For a full commit history, visit the [GitHub repository](https://github.com/elithaxxor/net-AttaKr_Stay-Anon/commits?per_page=100).
+```
 
 ---
 
